@@ -7,6 +7,7 @@ import tubby from "./imgs/tubby.jpg";
 import "./App.css";
 import DogList from "./DogList";
 import DogDetails from "./DogDetails";
+import Navbar from "./Navbar";
 
 class App extends Component {
   static defaultProps = {
@@ -53,14 +54,17 @@ class App extends Component {
       return <DogDetails {...props} dog={currentDog} />;
     };
     return (
-      <Switch>
-        <Route
-          exact
-          path="/dogs"
-          render={() => <DogList dogs={this.props.dogs} />}
-        ></Route>
-        <Route exact path="/dogs/:name" render={getDog}></Route>
-      </Switch>
+      <div>
+        <Navbar dogs={this.props.dogs} />
+        <Switch>
+          <Route
+            exact
+            path="/dogs"
+            render={() => <DogList dogs={this.props.dogs} />}
+          ></Route>
+          <Route exact path="/dogs/:name" render={getDog}></Route>
+        </Switch>
+      </div>
     );
   }
 }
